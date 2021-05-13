@@ -71,8 +71,21 @@ RUN ckan-pip3 install -U pip && \
     chown -R ckan:ckan $CKAN_HOME $CKAN_VENV $CKAN_CONFIG $CKAN_STORAGE_PATH
 
 ENTRYPOINT ["/ckan-entrypoint.sh"]
-
 USER ckan
 EXPOSE 5000
 
+# Install FIWARE specific extensions
+RUN pip install -e git+https://github.com/conwetlab/ckanext-datarequests.git#egg=ckanext-datarequests && \
+    pip install -e git+https://github.com/conwetlab/ckanext-fiware_header.git#egg=ckanext-fiware_header && \
+    pip install -e git+https://github.com/okfn/ckanext-fiwarelabs.git#egg=ckanext-fiwarelabs && \
+    pip install -e git+https://github.com/ckan/ckanext-geoview.git#egg=ckanext-geoview && \
+    pip install -e git+https://github.com/telefonicaid/ckanext-ngsiview#egg=ckanext-ngsiview && \
+    pip install -e git+https://github.com/conwetlab/ckanext-oauth2#egg=ckanext-oauth2 && \
+    pip install -e git+https://github.com/ckan/ckanext-pdfview.git#egg=ckanext-pdfview && \
+    pip install -e git+https://github.com/ckan/ckanext-harvest.git#egg=ckanext-harvest && \
+    pip install -e git+https://github.com/conwetlab/ckanext-privatedatasets.git#egg=ckanext-privatedatasets && \
+    pip install -e git+https://github.com/conwetlab/ckanext-storepublisher.git#egg=ckanext-storepublisher
+
+
 CMD ["ckan","-c","/etc/ckan/production.ini", "run", "--host", "0.0.0.0"]
+
