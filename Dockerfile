@@ -18,6 +18,7 @@ RUN update-locale LANG=${LC_ALL}
 RUN apt-get -q -y update \
     && DEBIAN_FRONTEND=noninteractive apt-get -q -y upgrade \
     && apt-get -q -y install \
+        python-pip \
         python3.6 \
         python3-dev \
         python3-pip \
