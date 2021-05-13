@@ -18,6 +18,17 @@
 debug = false
 
 [app:main]
+
+#
+#
+#NewPlugins
+
+ckan.plugins = linechart barchart piechart basicgrid
+
+#EndNewPlugins
+#
+#
+
 use = egg:ckan
 
 ## Development settings
