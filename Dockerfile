@@ -23,12 +23,7 @@ RUN apt-get -q -y update \
         wget \
     && apt-get -q clean \
     && rm -rf /var/lib/apt/lists/*
-# Install FIWARE specific extensions
-RUN git clone https://github.com/ckan/ckanext-basiccharts && \
-     python setup.py install
-    
-    
-    
+   
 # Define environment variables
 ENV CKAN_HOME /usr/lib/ckan
 ENV CKAN_VENV $CKAN_HOME/venv
@@ -66,6 +61,12 @@ EXPOSE 5000
 CMD ["ckan-paster","serve","/etc/ckan/production.ini"]
 
 COPY "myconfig/production.ini.teste"  "/etc/ckan/production.ini"
+
+# Install FIWARE specific extensions
+
+RUN git clone https://github.com/ckan/ckanext-basiccharts
+
+RUN python setup.py install
 
 
 
