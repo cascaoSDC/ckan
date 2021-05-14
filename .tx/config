@@ -4,7 +4,7 @@ host = https://www.transifex.com
 [ckan.2-9]
 file_filter = ckan/i18n/<lang>/LC_MESSAGES/ckan.po
 source_file = ckan/i18n/ckan.pot
-source_lang = en
+source_lang = pt_PT
 type = PO
 
 # Namings not quite the same in Transifex and babel:
