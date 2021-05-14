@@ -13,7 +13,7 @@ RUN apt-get install --no-install-recommends -y locales
 RUN sed -i "/$LC_ALL/s/^# //g" /etc/locale.gen
 RUN dpkg-reconfigure --frontend=noninteractive locales 
 RUN update-locale LANG=${LC_ALL}
-RUN apt-get install --no-install-recommends -y python-pip
+# RUN apt-get install --no-install-recommends -y python-pip
 
 # Install required system packages
 RUN apt-get -q -y update \
