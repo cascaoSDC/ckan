@@ -23,7 +23,12 @@ RUN apt-get -q -y update \
         wget \
     && apt-get -q clean \
     && rm -rf /var/lib/apt/lists/*
-
+# Install FIWARE specific extensions
+RUN git clone https://github.com/ckan/ckanext-basiccharts && \
+     python setup.py install
+    
+    
+    
 # Define environment variables
 ENV CKAN_HOME /usr/lib/ckan
 ENV CKAN_VENV $CKAN_HOME/venv
@@ -63,11 +68,7 @@ CMD ["ckan-paster","serve","/etc/ckan/production.ini"]
 COPY "myconfig/production.ini.teste"  "/etc/ckan/production.ini"
 
 
-# Install FIWARE specific extensions
-# RUN pip install -e git+https://github.com/ckan/ckanext-geoview.git#egg=ckanext-geoview && \
-#    pip install -e git+https://github.com/telefonicaid/ckanext-ngsiview#egg=ckanext-ngsiview && \
-#    pip install -e git+https://github.com/ckan/ckanext-pdfview.git#egg=ckanext-pdfview && \
-#    pip install -e git+https://github.com/conwetlab/ckanext-storepublisher.git#egg=ckanext-storepublisher
+
 
 
 
