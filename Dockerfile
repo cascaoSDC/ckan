@@ -71,8 +71,14 @@ RUN ckan-pip3 install -U pip && \
     chown -R ckan:ckan $CKAN_HOME $CKAN_VENV $CKAN_CONFIG $CKAN_STORAGE_PATH
 
 ENTRYPOINT ["/ckan-entrypoint.sh"]
+
 USER ckan
 EXPOSE 5000
+
+CMD ["ckan","-c","/etc/ckan/production.ini", "run", "--host", "0.0.0.0"]
+
+COPY "myconfig/production.ini.teste"  "/etc/ckan/production.ini"
+
 
 # Install FIWARE specific extensions
 # RUN pip install -e git+https://github.com/ckan/ckanext-geoview.git#egg=ckanext-geoview && \
@@ -82,6 +88,3 @@ EXPOSE 5000
 
 
 
-CMD ["ckan","-c","/etc/ckan/production.ini", "run", "--host", "0.0.0.0"]
-
-COPY "./myconfig/production.ini.teste"  "/etc/ckan/production.ini"
