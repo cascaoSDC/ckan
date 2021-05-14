@@ -60,7 +60,7 @@ EXPOSE 5000
 
 CMD ["ckan-paster","serve","/etc/ckan/production.ini"]
 
-COPY "myconfig/production.ini.teste"  "/etc/ckan/production.ini"
+COPY "myconfig/production.in.teste"  "/etc/ckan/production.ini"
 
 # Install FIWARE specific extensions
 
