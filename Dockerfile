@@ -13,12 +13,12 @@ RUN apt-get install --no-install-recommends -y locales
 RUN sed -i "/$LC_ALL/s/^# //g" /etc/locale.gen
 RUN dpkg-reconfigure --frontend=noninteractive locales 
 RUN update-locale LANG=${LC_ALL}
+RUN apt-get install --no-install-recommends -y python-pip
 
 # Install required system packages
 RUN apt-get -q -y update \
     && DEBIAN_FRONTEND=noninteractive apt-get -q -y upgrade \
     && apt-get -q -y install \
-        python-pip \
         python3.6 \
         python3-dev \
         python3-pip \
