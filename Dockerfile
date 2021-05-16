@@ -1,15 +1,7 @@
 # See CKAN docs on installation from Docker Compose on usage
 FROM debian:jessie
 MAINTAINER Open Knowledge
-# Install FIWARE specific extensions
-RUN echo 'make dir'
-RUN mkdir -p ./plugins
-RUN echo 'worckdir change'
-WORKDIR ./plugins
-RUN echo 'clone'
-RUN git clone https://github.com/ckan/ckanext-basiccharts
-RUN echo 'install'
-RUN cd /ckanext-basiccharts
+
 # Install required system packages
 RUN apt-get -q -y update \
     && DEBIAN_FRONTEND=noninteractive apt-get -q -y upgrade \
@@ -70,3 +62,12 @@ EXPOSE 5000
 CMD ["ckan-paster","serve","/etc/ckan/production.ini"]
 
 COPY "myconfig/production.in.teste"  "/etc/ckan/production.ini"
+# Install FIWARE specific extensions
+RUN echo 'make dir'
+RUN mkdir -p ./plugins
+RUN echo 'worckdir change'
+WORKDIR ./plugins
+RUN echo 'clone'
+RUN git clone https://github.com/ckan/ckanext-basiccharts
+RUN echo 'install'
+RUN cd /ckanext-basiccharts && \ python setup.py install
