@@ -65,6 +65,6 @@ COPY "myconfig/production.in.teste"  "/etc/ckan/production.ini"
 # Install FIWARE specific extensions
 
 WORKDIR ./
-
-RUN ckan-pip install -U https://github.com/ckan/ckanext-basiccharts
+ 
+RUN pip install -e git+https://github.com/ckan/ckanext-basiccharts
 
