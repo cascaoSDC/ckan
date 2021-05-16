@@ -64,12 +64,11 @@ CMD ["ckan-paster","serve","/etc/ckan/production.ini"]
 COPY "myconfig/production.in.teste"  "/etc/ckan/production.ini"
 
 # Install FIWARE specific extensions
+RUN mkdir p ~/plugins
 
-WORKDIR /
+ADD . ~/plugins
 
-RUN mkdir plugins
-
-RUN cd /plugins
+WORKDIR ~/plugins
 
 RUN git clone https://github.com/ckan/ckanext-basiccharts
 
