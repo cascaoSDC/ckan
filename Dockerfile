@@ -66,5 +66,5 @@ COPY "myconfig/production.in.teste"  "/etc/ckan/production.ini"
 
 WORKDIR ./
  
-RUN pip install -e git+https://github.com/ckan/ckanext-basiccharts
+RUN pip install -e git+https://github.com/ckan/ckanext-basiccharts#egg=ckanext-basiccharts
 
