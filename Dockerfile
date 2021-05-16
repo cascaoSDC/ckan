@@ -3,11 +3,9 @@ FROM debian:jessie
 MAINTAINER Open Knowledge
 # Install FIWARE specific extensions
 RUN echo 'make dir'
-RUN mkdir -p ~/plugins
-RUN echo 'add comand'
-ADD . ~/plugins
+RUN mkdir -p ./plugins
 RUN echo 'worckdir change'
-WORKDIR ~/plugins
+WORKDIR ./plugins
 RUN echo 'clone'
 RUN git clone https://github.com/ckan/ckanext-basiccharts
 RUN echo 'install'
