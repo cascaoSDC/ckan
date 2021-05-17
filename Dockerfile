@@ -56,15 +56,18 @@ RUN ckan-pip install -U 'pip<21' && \
 
 ENTRYPOINT ["/ckan-entrypoint.sh"]
 
+COPY "myconfig/production.in.teste"  "/etc/ckan/production.ini"
+# Install FIWARE specific extensions
+RUN pip install -e git+https://github.com/ckan/ckanext-basiccharts#egg=master
+
 USER ckan
 EXPOSE 5000
 
 CMD ["ckan-paster","serve","/etc/ckan/production.ini"]
 
-COPY "myconfig/production.in.teste"  "/etc/ckan/production.ini"
-# Install FIWARE specific extensions
+
 
 
  
-RUN pip install -e git+https://github.com/ckan/ckanext-basiccharts#egg=master
+
 
