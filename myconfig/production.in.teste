@@ -16,7 +16,9 @@
 debug = false
 [server:main]
 
-## done this shit
+#testplugin
+ckan.plugins = linechart barchart piechart basicgrid
+#end test
 
 use = egg:Paste#http
 host = 0.0.0.0
